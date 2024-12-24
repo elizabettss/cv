@@ -1,5 +1,5 @@
 function fetchData() {
-    fetch('https://profile-builder.free.beeceptor.com/cv', {
+    fetch('https://profile.free.beeceptor.com/cv', {
       method: 'GET', 
         headers: {
             'Content-Type': 'application/json'
