@@ -32,7 +32,7 @@
             { progLang: 'C#', progLevel: 'Junior' }
         ],
         imageSrc: 'image.png',
-        link: 'http://127.0.0.1:5500/mycv/index.html ',
+        link: 'http://127.0.0.1:5500/allcv/index.html',
         showDetails: false
     },
     {
@@ -47,15 +47,15 @@
             { progLang: 'Python', progLevel: 'Senior' },
             { progLang: 'Java', progLevel: 'Mid-level' }
         ],
-        imageSrc: 'images.jpg',
-        link: 'http://127.0.0.1:5500/mycv/index1.html ',
+        imageSrc: 'images.png',
+        link: 'http://127.0.0.1:5500/allcv/index.html',
         showDetails: false
     }
 ]
     }">
 
     <!-- Create CV Button -->
-    <div onclick="window.open('http://127.0.0.1:5500/createcv/', '_blank')">
+    <div onclick="window.open('http://127.0.0.1:5500/create/index1.html', '_blank')">
     <button class="button create-cv">✏ Create a new CV</button>
     </div>
      <button class="button backH" x-on:click="window.scrollTo({ top: 0, behavior: 'smooth' })">
@@ -106,7 +106,7 @@
             </div>
             <div>
               <button class="button more-details" 
-              x-on:click="window.open(profile.link, '_blank')">
+              x-on:click="window.open('profile.link', '_blank')">
         <span>More details</span>
       </button>
             </div>
