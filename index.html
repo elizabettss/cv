@@ -1,0 +1,127 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Profile Builder</title>  
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script type="application/javascript" src= "script.js"></script>
+  <link rel="stylesheet" href= "style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>ProFile Builder</h1>
+    <h2>All CVs</h2>
+    
+  </header>
+ 
+  <!-- Alpine.js Data -->
+  <main x-data="{ 
+    profiles: [
+    {
+        fullname: 'Yelyzaveta Demchenko',
+        id: '1',
+        citizenship: 'Ukrainian',
+        gender: 'Female',
+        maritalStatus: 'Single',
+        age: 18,
+        languages: [{ name: 'English', level: 'B2' }],
+        programmingLanguages: [
+            { progLang: 'JavaScript', progLevel: 'Junior' },
+            { progLang: 'C#', progLevel: 'Junior' }
+        ],
+        imageSrc: 'image.png',
+        link: 'http://127.0.0.1:5500/mycv/index.html ',
+        showDetails: false
+    },
+    {
+        fullname: 'John Doe',
+        id: '2',
+        citizenship: 'American',
+        gender: 'Male',
+        maritalStatus: 'Married',
+        age: 26,
+        languages: [{ name: 'Spanish', level: 'B2' }, { name: 'English', level: 'C1' }],
+        programmingLanguages: [
+            { progLang: 'Python', progLevel: 'Senior' },
+            { progLang: 'Java', progLevel: 'Mid-level' }
+        ],
+        imageSrc: 'images.jpg',
+        link: 'http://127.0.0.1:5500/mycv/index1.html ',
+        showDetails: false
+    }
+]
+    }">
+
+    <!-- Create CV Button -->
+    <div onclick="window.open('http://127.0.0.1:5500/createcv/', '_blank')">
+    <button class="button create-cv">✏ Create a new CV</button>
+    </div>
+     <button class="button backH" x-on:click="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        ⩕
+    </button>
+   
+    <div class="container"> 
+      
+      <div class="profile-list">
+      <template x-for="(profile, index) in profiles" :key="index">  
+        <div class="profile-card">
+          <div>
+           <img class = "img" :src="profile.imageSrc" id="profileImage" />
+          </div>
+          <div class="profile-content">
+            <h3><span x-text="profile.fullname"></span></h3>
+
+            <button class="button more-details" 
+                    x-on:click="profile.showDetails = !profile.showDetails">
+              <span>Previews</span>
+            </button>
+            <div class="profile-details" 
+                 x-bind:class="{'visible': profile.showDetails}">
+              <p><strong>ID: </strong><span x-text="profile.id"></span></p>
+              <h2>Personal Details:</h2>
+        <ul>
+          <li><span x-text="profile.citizenship"></span></li>
+          <li> <span x-text="profile.gender"></span></li>
+          <li> <span x-text="profile.maritalStatus"></span></li>
+          <li><span x-text="profile.age"></span></li>
+        </ul>
+              <h2>Languages:</h2>
+              <ul>
+                <template x-for="(language, idx) in profile.languages" :key="idx">
+                  <li>
+                     <span x-text="language.name"></span> - <span x-text="language.level"></span>
+                  </li>
+                </template>
+              </ul>
+              <h2>Programming Languages:</h2>
+              <ul>
+                <template x-for="(lang, idx) in profile.programmingLanguages" :key="idx">
+                  <li>
+                    <span x-text="lang.progLang"></span> - <span x-text="lang.progLevel"></span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+            <div>
+              <button class="button more-details" 
+              x-on:click="window.open(profile.link, '_blank')">
+        <span>More details</span>
+      </button>
+            </div>
+      </div> 
+      </div>
+     </div>
+     </template>
+    </div>
+  </main>
+  
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <img class="modal-img" id="modalImage" />
+      <button class="modal-close" id="closeModal">✖</button>
+    </div>
+  </div>
+</body>
+</html>
