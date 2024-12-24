@@ -50,7 +50,7 @@ document.addEventListener('alpine:init', () => {
         data.personalDetails.age = Number(data.personalDetails.age);
   
         try {
-          let response = await fetch('https://profile-builder.free.beeceptor.com/cretecv', {
+          let response = await fetch('https://profile.free.beeceptor.com/createcv', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ document.addEventListener('alpine:init', () => {
             this.errorMessage = '';
             const emailRegex = /^[^\s@]+@nure\.ua$/;
             if (!emailRegex.test(this.newEmail)) {
-              this.errorMessage = 'Invalid email format.';
+              this.errorMessage = 'Invalid email format. Must end with @nure.ua';
             }
           },
           addEmail() {
@@ -146,7 +146,7 @@ document.addEventListener('alpine:init', () => {
             this.errorMessage = '';
             const phoneRegex = /^\+(\d{2,3})\d{10}$/;
             if (!phoneRegex.test(this.newPhone)) {
-              this.errorMessage = 'Invalid phone number.';
+              this.errorMessage = 'Invalid phone number. Must start with + and country code';
             }
           },
           addPhone() {
@@ -190,6 +190,12 @@ document.addEventListener('alpine:init', () => {
         const [year, month, day] = date.split('-'); 
         return `${day}.${month}.${year}`;
     }
+  
+    
+    
+  
+  
+    
   
     
     
